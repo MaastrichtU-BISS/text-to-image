@@ -1,0 +1,55 @@
+<template>
+  <div class="container-fluid vh-100 max-vh-100">
+    <div class="row h-100">
+      <Sidebar @create="create" />
+      <main
+        class="col d-flex flex-column align-items-center justify-content-center"
+      >
+        <img :src="link" />
+        <span>{{ prompt }}</span>
+      </main>
+    </div>
+  </div>
+</template>
+
+<script setup>
+const link = ref(
+  "/img/DALL·E 2022-11-11 14.24.43 - Marlon Brando eating soup on the beach in the style of van Gogh.png"
+);
+
+const prompt = ref(
+  "Marlon Brando eating soup on the beach in the style of van Gogh"
+);
+
+async function create(object, action, location, style) {
+  if (!object || !action || !location) {
+    alert("Please fill in the form");
+    return;
+  }
+
+  const newPrompt =
+    object +
+    " " +
+    action +
+    " " +
+    location +
+    (style ? " in the style of " + style : "");
+
+  const imageUrl = await $fetch("/api/image", {
+    method: "POST",
+    body: JSON.stringify({
+      prompt: newPrompt
+    })
+  })
+
+  console.log(imageUrl)
+
+  prompt.value = newPrompt;
+}
+</script>
+
+<style scoped>
+img {
+  height: 75vh;
+}
+</style>

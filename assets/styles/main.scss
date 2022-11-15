@@ -1,0 +1,30 @@
+@import "bootstrap/scss/bootstrap";
+
+@font-face {
+  font-family: "BISS";
+  src:  url("./assets/fonts/BISS-Book.ttf") format("truetype"),
+        url("./assets/fonts/BISS-Book.woff") format("woff");
+  font-weight: 300;
+}
+@font-face {
+  font-family: "BISS";
+  src:  url("./assets/fonts/BISS-Medium.ttf") format("truetype"),
+        url("./assets/fonts/BISS-Medium.woff") format("woff");
+  font-weight: normal;
+}
+@font-face {
+  font-family: "BISS";
+  src:  url("./assets/fonts/BISS-Bold.ttf") format("truetype"),
+        url("./assets/fonts/BISS-Bold.woff") format("woff");
+  font-weight: 700;
+}
+@font-face {
+  font-family: "BISS";
+  src:  url("./assets/fonts/BISS-Black.ttf") format("truetype"),
+        url("./assets/fonts/BISS-Black.woff") format("woff");
+  font-weight: 900;
+}
+
+body {
+  font-family: "BISS", serif;
+}
