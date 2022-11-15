@@ -27,24 +27,29 @@ async function create(object, action, location, style) {
     return;
   }
 
-  const newPrompt =
+  const newPrompt = createPrompt(object, action, location, style);
+
+  const imageUrl = await $fetch("/api/image", {
+    method: "POST",
+    body: JSON.stringify({
+      prompt: newPrompt,
+    }),
+  });
+
+  console.log(imageUrl);
+
+  prompt.value = newPrompt;
+}
+
+function createPrompt(object, action, location, style) {
+  return (
     object +
     " " +
     action +
     " " +
     location +
-    (style ? " in the style of " + style : "");
-
-  const imageUrl = await $fetch("/api/image", {
-    method: "POST",
-    body: JSON.stringify({
-      prompt: newPrompt
-    })
-  })
-
-  console.log(imageUrl)
-
-  prompt.value = newPrompt;
+    (style ? " in the style of " + style : "")
+  );
 }
 </script>
 
