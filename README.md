@@ -1,6 +1,8 @@
-# Nuxt 3 Minimal Starter
+# Text to image
 
-Look at the [nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.
+We use the OpenAI API to make calls to Dall-E and present the users with their creations.
+
+This project is built using Nuxt v3, look at the [nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.
 
 ## Setup
 
