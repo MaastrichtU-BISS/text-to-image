@@ -23,6 +23,7 @@
           aria-describedby="inputObject"
           placeholder="Marlon Brando"
           v-model="object"
+          required
         />
       </div>
       <div>
@@ -34,6 +35,7 @@
           aria-describedby="inputAction"
           placeholder="eating soup"
           v-model="action"
+          required
         />
       </div>
       <div>
@@ -47,6 +49,7 @@
           aria-describedby="inputLocation"
           placeholder="on the beach"
           v-model="location"
+          required
         />
       </div>
       <div>
