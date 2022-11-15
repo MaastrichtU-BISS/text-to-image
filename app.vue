@@ -29,12 +29,7 @@ async function create(object, action, location, style) {
 
   const newPrompt = createPrompt(object, action, location, style);
 
-  const imageUrl = await $fetch("/api/image", {
-    method: "POST",
-    body: JSON.stringify({
-      prompt: newPrompt,
-    }),
-  });
+  const imageUrl = await getImageUrl(newPrompt);
 
   console.log(imageUrl);
 
@@ -50,6 +45,15 @@ function createPrompt(object, action, location, style) {
     location +
     (style ? " in the style of " + style : "")
   );
+}
+
+async function getImageUrl(prompt) {
+  return $fetch("/api/image", {
+    method: "POST",
+    body: JSON.stringify({
+      prompt,
+    }),
+  });
 }
 </script>
 
