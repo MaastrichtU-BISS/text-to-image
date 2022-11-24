@@ -50,8 +50,10 @@ async function create(object, action, location, style) {
 
   link.value = "/img/bars.svg"
 
+  const imageUrl = await getImageUrl(newPrompt);
   console.log(imageUrl);
 
+  link.value = imageUrl;
   prompt.value = newPrompt;
   creatingImage.value = false;
 }
