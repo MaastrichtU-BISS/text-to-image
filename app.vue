@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid vh-100 max-vh-100">
     <div class="row h-100">
-      <Sidebar @create="create" :creating-image="creatingImage" />
+      <Sidebar @create="create" :creating-image="creatingImage" :link="link" />
       <main
         class="col d-flex flex-column align-items-center justify-content-center"
       >

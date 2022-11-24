@@ -70,17 +70,35 @@
         Create
       </button>
     </form>
+    <div v-if="!firstImage">
+      <p class="mb-0 mt-3">
+        If you want to save your image, scan the QR code below with your phone
+        and save it to your phone (within 10 minutes)
+      </p>
+      <div class="w-100 d-flex justify-content-center">
+        <img
+          :src="`https://chart.googleapis.com/chart?cht=qr&chs=300x300&chl=${link}`"
+        />
+      </div>
+    </div>
   </section>
 </template>
 
 <script setup>
 defineEmits(["create"]);
-defineProps(["creatingImage"]);
+const props = defineProps(["creatingImage", "link"]);
 
 const object = ref("");
 const action = ref("");
 const location = ref("");
 const style = ref("");
+
+const firstImage = computed(() => {
+  return (
+    props.link ===
+    "/img/DALL·E 2022-11-11 14.24.43 - Marlon Brando eating soup on the beach in the style of van Gogh.png"
+  );
+});
 </script>
 
 <style scoped>
