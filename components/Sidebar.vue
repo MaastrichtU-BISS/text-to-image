@@ -1,7 +1,7 @@
 <template>
-  <section id="sidebar" class="col-3 h-100 shadow-lg">
+  <section id="sidebar" class="col-3 h-100 shadow-lg overflow-hidden">
     <div class="row">
-      <div class="col-6">
+      <div class="col-6" style="margin-top: -1rem">
         <img
           id="biss-logo"
           src="../assets/images/biss_um_logo_black.png"
