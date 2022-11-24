@@ -12,7 +12,7 @@ export default defineEventHandler(async (event) => {
 
   const response = await openai.createModeration({
     input: body.input
-  }).then(response => response.data.results[0]);
+  });
 
-  return response;
+  return response.data.results[0];
 })
