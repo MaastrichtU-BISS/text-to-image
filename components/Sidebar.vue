@@ -66,7 +66,7 @@
         />
       </div>
 
-      <button type="submit" class="btn btn-primary w-100 fs-1 mt-3">
+      <button type="submit" class="btn btn-primary w-100 fs-1 mt-3" :disabled="creatingImage">
         Create
       </button>
     </form>
@@ -75,6 +75,7 @@
 
 <script setup>
 defineEmits(["create"]);
+defineProps(["creatingImage"]);
 
 const object = ref("");
 const action = ref("");

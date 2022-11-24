@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid vh-100 max-vh-100">
     <div class="row h-100">
-      <Sidebar @create="create" />
+      <Sidebar @create="create" :creating-image="creatingImage" />
       <main
         class="col d-flex flex-column align-items-center justify-content-center"
       >
@@ -20,12 +20,15 @@ const link = ref(
 const prompt = ref(
   "Marlon Brando eating soup on the beach in the style of van Gogh"
 );
+const creatingImage = ref(false);
 
 async function create(object, action, location, style) {
   if (!object || !action || !location) {
     alert("Please fill in the form");
     return;
   }
+
+  creatingImage.value = true;
 
   const newPrompt = createPrompt(object, action, location, style);
 
@@ -40,6 +43,8 @@ async function create(object, action, location, style) {
       "This prompt is not allowed because it contains: " +
         flaggedCategories.join(", ")
     );
+
+    creatingImage.value = false;
     return;
   }
 
@@ -48,6 +53,7 @@ async function create(object, action, location, style) {
   console.log(imageUrl);
 
   prompt.value = newPrompt;
+  creatingImage.value = false;
 }
 
 function createPrompt(object, action, location, style) {
