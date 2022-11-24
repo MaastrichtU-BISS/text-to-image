@@ -11,8 +11,8 @@ export default defineEventHandler(async (event) => {
   const body = await readBody(event)
 
   const response = await openai.createModeration({
-    input: "I want to kill them.",
-  });
+    input: "I want to kill them."
+  }).then(response => response.data.results[0]);
 
   return response;
 })
