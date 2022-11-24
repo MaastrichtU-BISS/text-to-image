@@ -66,7 +66,11 @@
         />
       </div>
 
-      <button type="submit" class="btn btn-primary w-100 fs-1 mt-3" :disabled="creatingImage">
+      <button
+        type="submit"
+        class="btn btn-primary w-100 fs-1 mt-3"
+        :disabled="creatingImage"
+      >
         Create
       </button>
     </form>
