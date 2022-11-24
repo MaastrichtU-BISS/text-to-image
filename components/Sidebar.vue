@@ -79,16 +79,15 @@
         If you want to save your image, scan the QR code below with your phone
         and save it to your phone (within 10 minutes)
       </p>
-      <div class="w-100 d-flex justify-content-center">
-        <img
-          :src="`https://chart.googleapis.com/chart?cht=qr&chs=300x300&chl=${link}`"
-        />
+      <div class="w-100 d-flex justify-content-center mt-3">
+        <qrcode-vue :value="link" size="250" level="L" />
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
+import QrcodeVue from 'qrcode.vue'
 defineEmits(["create"]);
 const props = defineProps(["creatingImage", "link"]);
 
