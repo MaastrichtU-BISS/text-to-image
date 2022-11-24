@@ -50,7 +50,7 @@ function createPrompt(object, action, location, style) {
 }
 
 async function moderateInput(input) {
-  return $fetch("/api/moderation", {
+  return $fetch("/api/moderate", {
     method: "POST",
     body: JSON.stringify({
       input,
