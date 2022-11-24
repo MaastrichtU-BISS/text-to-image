@@ -43,7 +43,7 @@ async function create(object, action, location, style) {
     return;
   }
 
-  const imageUrl = await getImageUrl(newPrompt);
+  link.value = "/img/bars.svg"
 
   console.log(imageUrl);
 
