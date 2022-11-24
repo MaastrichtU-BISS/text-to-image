@@ -31,6 +31,18 @@ async function create(object, action, location, style) {
 
   const moderationResults = await moderateInput(newPrompt);
 
+  if (moderationResults.flagged) {
+    const flaggedCategories = Object.entries(moderationResults.categories)
+      .filter(([category, flagged]) => flagged === true)
+      .map(([category, flagged]) => category);
+
+    alert(
+      "This prompt is not allowed because it contains: " +
+        flaggedCategories.join(", ")
+    );
+    return;
+  }
+
   const imageUrl = await getImageUrl(newPrompt);
 
   console.log(imageUrl);
