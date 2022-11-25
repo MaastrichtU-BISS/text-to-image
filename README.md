@@ -21,6 +21,12 @@ Start the development server on http://localhost:3000
 yarn dev
 ```
 
+Or start the development server on http://localhost:XXXX
+
+```bash
+yarn dev --port XXXX
+```
+
 ## Production
 
 Build the application for production:
