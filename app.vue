@@ -7,6 +7,9 @@
       >
         <img :src="link" />
         <span>{{ prompt }}</span>
+        <button type="button" class="btn btn-primary w-50 fs-1 mt-3" v-if="!firstImage">
+          Save
+        </button>
       </main>
     </div>
   </div>
@@ -95,5 +98,32 @@ async function getImageUrl(prompt) {
 <style scoped>
 img {
   height: 75vh;
+}
+
+button {
+  border: none;
+  background: rgb(182, 205, 0);
+  background: -moz-linear-gradient(
+    0deg,
+    rgba(182, 205, 0, 1) 0%,
+    rgba(0, 152, 129, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    0deg,
+    rgba(182, 205, 0, 1) 0%,
+    rgba(0, 152, 129, 1) 100%
+  );
+  background: linear-gradient(
+    0deg,
+    rgba(182, 205, 0, 1) 0%,
+    rgba(0, 152, 129, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#b6cd00",endColorstr="#009881",GradientType=1);
+}
+button:hover {
+  filter: brightness(0.9);
+}
+button:active {
+  filter: brightness(0.75);
 }
 </style>
