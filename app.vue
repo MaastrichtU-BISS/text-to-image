@@ -14,8 +14,8 @@
         <span>{{ prompt }}</span>
         <button
           type="button"
-          class="btn btn-secondary w-50 fs-1 mt-3 position-absolute bottom-0"
-          :disabled="firstImage"
+          class="btn btn-outline-primary w-50 fs-1 mt-3 position-absolute bottom-0"
+          :disabled="firstImag"
           data-bs-toggle="modal"
           data-bs-target="#qrModal"
         >
@@ -155,30 +155,32 @@ img {
   }
 }
 
-.btn-secondary {
-  border: none;
-  background: rgb(182, 205, 0);
+.btn-outline-primary {
+  color: #005CA9;
+  border-color: #005CA9;
+}
+
+.btn-outline-primary:hover, .btn-outline-primary:active {
+  color: #fff;
+  background: rgb(0, 158, 227);
   background: -moz-linear-gradient(
     0deg,
-    rgba(182, 205, 0, 1) 0%,
-    rgba(0, 152, 129, 1) 100%
+    rgba(0, 158, 227, 1) 0%,
+    rgba(0, 92, 169, 1) 100%
   );
   background: -webkit-linear-gradient(
     0deg,
-    rgba(182, 205, 0, 1) 0%,
-    rgba(0, 152, 129, 1) 100%
+    rgba(0, 158, 227, 1) 0%,
+    rgba(0, 92, 169, 1) 100%
   );
   background: linear-gradient(
     0deg,
-    rgba(182, 205, 0, 1) 0%,
-    rgba(0, 152, 129, 1) 100%
+    rgba(0, 158, 227, 1) 0%,
+    rgba(0, 92, 169, 1) 100%
   );
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#b6cd00",endColorstr="#009881",GradientType=1);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#009ee3",endColorstr="#005ca9",GradientType=1);
 }
-.btn-secondary:hover {
-  filter: brightness(0.9);
-}
-.btn-secondary:active {
-  filter: brightness(0.75);
+.btn-outline-primary:active {
+  filter: brightness(0.8);
 }
 </style>
