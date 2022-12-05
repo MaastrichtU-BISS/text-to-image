@@ -102,7 +102,15 @@ async function getImageUrl(prompt) {
 
 <style scoped>
 img {
-  height: 75vh;
+  width: 75%;
+  max-width: 100%;
+  height: auto;
+}
+
+@media (min-width: 1920px) {
+  img {
+    width: 50%;
+  }
 }
 
 button {
