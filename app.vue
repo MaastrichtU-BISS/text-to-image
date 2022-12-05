@@ -8,11 +8,15 @@
         :link="link"
       />
       <main
-        class="col d-flex flex-column align-items-center justify-content-center"
+        class="col-9 d-flex flex-column align-items-center justify-content-center position-relative"
       >
         <img :src="link" />
         <span>{{ prompt }}</span>
-        <button type="button" class="btn btn-primary w-50 fs-1 mt-3" v-if="!firstImage">
+        <button
+          type="button"
+          class="btn btn-primary w-50 fs-1 mt-3 position-absolute bottom-0"
+          :disabled="firstImage"
+        >
           Save
         </button>
       </main>
