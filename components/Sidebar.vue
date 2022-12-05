@@ -9,6 +9,12 @@
           class="w-100"
         />
       </div>
+      <p class="col-12 text-danger mb-0">
+        <strong>De afbeeldingen werken alleen met Engelse antwoorden</strong>
+      </p>
+      <p class="col-12 text-danger">
+        <strong>The images only work with English answers</strong>
+      </p>
     </div>
 
     <form @submit.prevent="$emit('create', object, action, location, style)">
