@@ -14,17 +14,53 @@
         <span>{{ prompt }}</span>
         <button
           type="button"
-          class="btn btn-primary w-50 fs-1 mt-3 position-absolute bottom-0"
-          :disabled="firstImage"
+          class="btn btn-secondary w-50 fs-1 mt-3 position-absolute bottom-0"
+          data-bs-toggle="modal"
+          data-bs-target="#qrModal"
         >
           Save
         </button>
+
+        <div
+          class="modal fade"
+          id="qrModal"
+          tabindex="-1"
+          aria-labelledby="qrModal"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-body">
+                <button
+                  type="button"
+                  class="btn-close position-absolute top-0 end-0 p-3"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+                <p class="mb-0 mt-5">
+                  Om je afbeelding op te slaan, scan je de QR code hieronder met je
+                  telefoon en sla je de afbeelding op in je telefoon (binnen 10
+                  minuten)
+                </p>
+                <p class="mb-0 mt-3">
+                  To save your image, scan the QR code below with your phone and
+                  save the image to your phone (within 10 minutes)
+                </p>
+                <div class="w-100 d-flex justify-content-center mt-4 mb-3">
+                  <qrcode-vue :value="link" size="250" level="L" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </main>
     </div>
   </div>
 </template>
 
 <script setup>
+import QrcodeVue from "qrcode.vue";
+
 const ORIGINAL_IMAGE =
   "/img/DALL·E 2022-11-11 14.24.43 - Marlon Brando eating soup on the beach in the style of van Gogh.png";
 const link = ref(ORIGINAL_IMAGE);
@@ -117,7 +153,7 @@ img {
   }
 }
 
-button {
+.btn-secondary {
   border: none;
   background: rgb(182, 205, 0);
   background: -moz-linear-gradient(
@@ -137,10 +173,10 @@ button {
   );
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#b6cd00",endColorstr="#009881",GradientType=1);
 }
-button:hover {
+.btn-secondary:hover {
   filter: brightness(0.9);
 }
-button:active {
+.btn-secondary:active {
   filter: brightness(0.75);
 }
 </style>
