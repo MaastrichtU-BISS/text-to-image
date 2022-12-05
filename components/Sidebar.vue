@@ -89,19 +89,12 @@
 <script setup>
 import QrcodeVue from 'qrcode.vue'
 defineEmits(["create"]);
-const props = defineProps(["creatingImage", "link"]);
+defineProps(["firstImage", "creatingImage", "link"]);
 
 const object = ref("");
 const action = ref("");
 const location = ref("");
 const style = ref("");
-
-const firstImage = computed(() => {
-  return (
-    props.link ===
-    "/img/DALL·E 2022-11-11 14.24.43 - Marlon Brando eating soup on the beach in the style of van Gogh.png"
-  );
-});
 </script>
 
 <style scoped>

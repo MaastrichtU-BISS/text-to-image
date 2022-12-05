@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid vh-100 max-vh-100">
     <div class="row h-100">
-      <Sidebar @create="create" :creating-image="creatingImage" :link="link" />
+      <Sidebar @create="create" :first-image="firstImage" :creating-image="creatingImage" :link="link" />
       <main
         class="col d-flex flex-column align-items-center justify-content-center"
       >
@@ -13,14 +13,18 @@
 </template>
 
 <script setup>
-const link = ref(
-  "/img/DALL·E 2022-11-11 14.24.43 - Marlon Brando eating soup on the beach in the style of van Gogh.png"
-);
+const ORIGINAL_IMAGE =
+  "/img/DALL·E 2022-11-11 14.24.43 - Marlon Brando eating soup on the beach in the style of van Gogh.png";
+const link = ref(ORIGINAL_IMAGE);
 
 const prompt = ref(
   "Marlon Brando eating soup on the beach in the style of van Gogh"
 );
 const creatingImage = ref(false);
+
+const firstImage = computed(() => {
+  return link.value === ORIGINAL_IMAGE;
+});
 
 async function create(object, action, location, style) {
   if (!object || !action || !location) {
