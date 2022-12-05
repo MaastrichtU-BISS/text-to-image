@@ -38,9 +38,9 @@
                   aria-label="Close"
                 ></button>
                 <p class="mb-0 mt-5">
-                  Om je afbeelding op te slaan, scan je de QR code hieronder met je
-                  telefoon en sla je de afbeelding op in je telefoon (binnen 10
-                  minuten)
+                  Om je afbeelding op te slaan, scan je de QR code hieronder met
+                  je telefoon en sla je de afbeelding op in je telefoon (binnen
+                  10 minuten)
                 </p>
                 <p class="mb-0 mt-3">
                   To save your image, scan the QR code below with your phone and
