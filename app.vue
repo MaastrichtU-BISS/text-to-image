@@ -1,12 +1,7 @@
 <template>
   <div class="container-fluid vh-100 max-vh-100">
     <div class="row h-100">
-      <Sidebar
-        @create="create"
-        :first-image="firstImage"
-        :creating-image="creatingImage"
-        :link="link"
-      />
+      <Sidebar @create="create" :creating-image="creatingImage" :link="link" />
       <main
         class="col-9 d-flex flex-column align-items-center justify-content-center position-relative"
       >
@@ -14,12 +9,13 @@
         <span>{{ prompt }}</span>
         <button
           type="button"
-          class="btn btn-outline-primary w-50 fs-1 mt-3 bottom-0"
-          :disabled="firstImag"
+          class="btn btn-outline-primary w-50 fs-3 mt-3 bottom-0"
+          v-if="dalleImage"
           data-bs-toggle="modal"
           data-bs-target="#qrModal"
         >
-          Save Image
+          Klik hier om je afbeelding op je telefoon op te slaan<br />Click here
+          to save your image to your phone
         </button>
 
         <div
@@ -48,7 +44,7 @@
                   save the image to your phone (within 10 minutes)
                 </p>
                 <div class="w-100 d-flex justify-content-center mt-4 mb-3">
-                  <qrcode-vue :value="link" size="250" level="L" />
+                  <qrcode-vue :value="link" :size="250" level="L" />
                 </div>
               </div>
             </div>
@@ -62,17 +58,17 @@
 <script setup>
 import QrcodeVue from "qrcode.vue";
 
-const ORIGINAL_IMAGE =
-  "/img/DALL·E 2022-11-11 14.24.43 - Marlon Brando eating soup on the beach in the style of van Gogh.png";
-const link = ref(ORIGINAL_IMAGE);
+const link = ref(
+  "/img/DALL·E 2022-11-11 14.24.43 - Marlon Brando eating soup on the beach in the style of van Gogh.png"
+);
 
 const prompt = ref(
   "Marlon Brando eating soup on the beach in the style of van Gogh"
 );
 const creatingImage = ref(false);
 
-const firstImage = computed(() => {
-  return link.value === ORIGINAL_IMAGE;
+const dalleImage = computed(() => {
+  return link.value.startsWith("http");
 });
 
 async function create(object, action, location, style) {
@@ -156,11 +152,12 @@ img {
 }
 
 .btn-outline-primary {
-  color: #005CA9;
-  border-color: #005CA9;
+  color: #005ca9;
+  border-color: #005ca9;
 }
 
-.btn-outline-primary:hover, .btn-outline-primary:active {
+.btn-outline-primary:hover,
+.btn-outline-primary:active {
   color: #fff;
   background: rgb(0, 158, 227);
   background: -moz-linear-gradient(
