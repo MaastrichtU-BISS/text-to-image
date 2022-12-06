@@ -47,7 +47,7 @@
                   save the image to your phone (within 10 minutes)
                 </p>
                 <div class="w-100 d-flex justify-content-center mt-4 mb-3">
-                  <qrcode-vue :value="link" :size=250 level="L" />
+                  <qrcode-vue :value="link" :size="250" level="L" />
                 </div>
               </div>
             </div>
