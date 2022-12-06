@@ -15,7 +15,7 @@
         <button
           type="button"
           class="btn btn-outline-primary w-50 fs-1 mt-3 position-absolute bottom-0"
-          :disabled="firstImag"
+          :disabled="firstImage"
           data-bs-toggle="modal"
           data-bs-target="#qrModal"
         >
