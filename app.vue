@@ -18,7 +18,7 @@
           data-bs-toggle="modal"
           data-bs-target="#qrModal"
         >
-          Save
+          Save your image to your phone
         </button>
 
         <div
