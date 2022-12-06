@@ -9,12 +9,13 @@
         <span>{{ prompt }}</span>
         <button
           type="button"
-          class="btn btn-outline-primary w-50 fs-1 mt-3 position-absolute bottom-0"
+          class="btn btn-outline-primary w-50 fs-3 mt-3 position-absolute bottom-0"
           v-if="dalleImage"
           data-bs-toggle="modal"
           data-bs-target="#qrModal"
         >
-          Save your image to your phone
+          Klik hier om je afbeelding op je telefoon op te slaan<br />Click here
+          to save your image to your phone
         </button>
 
         <div
