@@ -3,7 +3,6 @@
     <div class="row h-100">
       <Sidebar
         @create="create"
-        :first-image="firstImage"
         :creating-image="creatingImage"
         :link="link"
       />

@@ -85,7 +85,7 @@
 
 <script setup>
 defineEmits(["create"]);
-defineProps(["firstImage", "creatingImage", "link"]);
+defineProps(["creatingImage", "link"]);
 
 const object = ref("");
 const action = ref("");
