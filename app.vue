@@ -14,12 +14,12 @@
         <span>{{ prompt }}</span>
         <button
           type="button"
-          class="btn btn-outline-primary w-50 fs-1 mt-3 position-absolute bottom-0"
+          class="btn btn-outline-primary w-50 fs-1 mt-3 bottom-0"
           :disabled="firstImag"
           data-bs-toggle="modal"
           data-bs-target="#qrModal"
         >
-          Save
+          Save Image
         </button>
 
         <div
