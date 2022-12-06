@@ -151,11 +151,12 @@ img {
 }
 
 .btn-outline-primary {
-  color: #005CA9;
-  border-color: #005CA9;
+  color: #005ca9;
+  border-color: #005ca9;
 }
 
-.btn-outline-primary:hover, .btn-outline-primary:active {
+.btn-outline-primary:hover,
+.btn-outline-primary:active {
   color: #fff;
   background: rgb(0, 158, 227);
   background: -moz-linear-gradient(
