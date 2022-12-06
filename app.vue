@@ -10,7 +10,7 @@
         <button
           type="button"
           class="btn btn-outline-primary w-50 fs-1 mt-3 position-absolute bottom-0"
-          :disabled="firstImage"
+          v-if="dalleImage"
           data-bs-toggle="modal"
           data-bs-target="#qrModal"
         >
@@ -66,8 +66,8 @@ const prompt = ref(
 );
 const creatingImage = ref(false);
 
-const firstImage = computed(() => {
-  return link.value === ORIGINAL_IMAGE;
+const dalleImage = computed(() => {
+  return link.value.startsWith("http");
 });
 
 async function create(object, action, location, style) {
