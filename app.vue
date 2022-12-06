@@ -57,9 +57,9 @@
 <script setup>
 import QrcodeVue from "qrcode.vue";
 
-const ORIGINAL_IMAGE =
-  "/img/DALL·E 2022-11-11 14.24.43 - Marlon Brando eating soup on the beach in the style of van Gogh.png";
-const link = ref(ORIGINAL_IMAGE);
+const link = ref(
+  "/img/DALL·E 2022-11-11 14.24.43 - Marlon Brando eating soup on the beach in the style of van Gogh.png"
+);
 
 const prompt = ref(
   "Marlon Brando eating soup on the beach in the style of van Gogh"
