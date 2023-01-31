@@ -27,7 +27,7 @@
           class="form-control"
           id="inputObject"
           aria-describedby="inputObject"
-          placeholder="Marlon Brando"
+          placeholder="For example: Marlon Brando"
           v-model="object"
           required
         />
@@ -39,7 +39,7 @@
           class="form-control"
           id="inputAction"
           aria-describedby="inputAction"
-          placeholder="eating soup"
+          placeholder="For example: eating soup"
           v-model="action"
           required
         />
@@ -53,7 +53,7 @@
           class="form-control"
           id="inputLocation"
           aria-describedby="inputLocation"
-          placeholder="on the beach"
+          placeholder="For example: on the beach"
           v-model="location"
           required
         />
@@ -67,7 +67,7 @@
           class="form-control"
           id="inputStyle"
           aria-describedby="inputStyle"
-          placeholder="Van Gogh"
+          placeholder="For example: Van Gogh"
           v-model="style"
         />
       </div>
