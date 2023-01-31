@@ -109,6 +109,18 @@ label {
 .form-control {
   font-weight: 300;
 }
+::placeholder {
+  color: #b9b9b9;
+  opacity: 1; /* Firefox */
+}
+/* Internet Explorer 10-11 */
+:-ms-input-placeholder {
+  color: #b9b9b9;
+}
+/* Microsoft Edge */
+::-ms-input-placeholder {
+  color: #b9b9b9;
+}
 
 button {
   border: none;
