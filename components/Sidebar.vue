@@ -17,18 +17,20 @@
       </p>
     </div>
 
-    <form @submit.prevent="$emit('create', object, action, location, style)">
+    <form autocomplete="off" @submit.prevent="$emit('create', object, action, location, style)">
       <div>
         <label for="inputObject" class="form-label"
           >Object / person / animal</label
         >
         <input
           type="text"
-          class="form-control"
+          autocomplete="off"
+          class="form-control userObject"
           id="inputObject"
           aria-describedby="inputObject"
           placeholder="For example: Marlon Brando"
           v-model="object"
+          @focus="hide_all_rows_except(0)"
           required
         />
       </div>
@@ -36,11 +38,13 @@
         <label for="inputAction" class="form-label">Action / activity</label>
         <input
           type="text"
-          class="form-control"
-          id="inputAction"
+          autocomplete="off"
+          class="form-control userAction"
+          id="inputAction "
           aria-describedby="inputAction"
           placeholder="For example: eating soup"
           v-model="action"
+          @focus="hide_all_rows_except(1)"
           required
         />
       </div>
@@ -50,11 +54,13 @@
         >
         <input
           type="text"
-          class="form-control"
+          autocomplete="off"
+          class="form-control userLocation"
           id="inputLocation"
           aria-describedby="inputLocation"
           placeholder="For example: on the beach"
           v-model="location"
+          @focus="hide_all_rows_except(2)"
           required
         />
       </div>
@@ -64,10 +70,12 @@
         >
         <input
           type="text"
-          class="form-control"
+          autocomplete="off"
+          class="form-control userStyle"
           id="inputStyle"
           aria-describedby="inputStyle"
           placeholder="For example: Van Gogh"
+          @focus="hide_all_rows_except(3)"
           v-model="style"
         />
       </div>
@@ -80,10 +88,12 @@
         Create
       </button>
     </form>
+    <div class="simple-keyboard"></div>
   </section>
 </template>
-
 <script setup>
+import Keyboard from "simple-keyboard";
+import "simple-keyboard/build/css/index.css";
 defineEmits(["create"]);
 defineProps(["creatingImage", "link"]);
 
@@ -91,9 +101,56 @@ const object = ref("");
 const action = ref("");
 const location = ref("");
 const style = ref("");
+
+let keyboard1 = null;
+let keyboard2 = null;
+let keyboard3 = null;
+let keyboard4 = null;
+
+function hide_all_rows_except(i) {
+  var rows = document.querySelectorAll(".hg-rows");
+  rows.forEach((r, index)  => {
+    if(index != i)
+      r.classList.add("d-none");
+    else
+      r.classList.remove("d-none");
+  })
+}
+
+onMounted(() => {
+  keyboard1 = new Keyboard({
+    onChange: (userObject) => {
+      document.querySelector(".userObject").value = userObject;
+      object.value = userObject;
+    },
+  });
+  keyboard2 = new Keyboard({
+    onChange: (userAction) => {
+      document.querySelector(".userAction").value = userAction;
+      console.log("userAction", userAction);
+      action.value = userAction;
+    }
+  });
+  keyboard3 = new Keyboard({
+    onChange: (userLocation) => {
+      document.querySelector(".userLocation").value = userLocation;
+      location.value = userLocation;
+    }
+  });
+  keyboard4 = new Keyboard({
+    onChange: (userStyle) => {
+      document.querySelector(".userStyle").value = userStyle;
+      style.value = userStyle;
+    },
+    onRender: () => {
+      hide_all_rows_except(-1);
+    }
+  });
+});
 </script>
 
 <style scoped>
+
 #biss-logo {
   margin-left: -1rem;
 }
