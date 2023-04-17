@@ -6,10 +6,17 @@ This project is built using Nuxt v3, look at the [nuxt 3 documentation](https://
 
 ## Setup
 
-Make sure to install the dependencies:
+1. Copy the project to your local machine
+2. Open the text-to-image folder in your IDE
+3. Create a new .env file in the root of the project
+4. Add the following line to the .env file:
+```env
+NUXT_API_KEY="your Dall-E2 api key here"
+```
+
+5. Install dependencies:
 
 ```bash
-# yarn
 yarn install
 ```
 
