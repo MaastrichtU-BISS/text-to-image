@@ -4,6 +4,8 @@ We use the OpenAI API to make calls to Dall-E and present the users with their c
 
 This project is built using Nuxt v3, look at the [nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.
 
+![image](https://github.com/MaastrichtU-BISS/text-to-image/assets/93982741/2e734ce4-b89d-4131-ab2f-3b6119862e69)
+
 ## Setup
 
 1. Copy the project to your local machine
