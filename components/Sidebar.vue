@@ -17,18 +17,23 @@
       </p>
     </div>
 
-    <form @submit.prevent="$emit('create', object, action, location, style)">
+    <form
+      autocomplete="off"
+      @submit.prevent="$emit('create', object, action, location, style)"
+    >
       <div>
         <label for="inputObject" class="form-label"
           >Object / person / animal</label
         >
         <input
           type="text"
-          class="form-control"
+          autocomplete="off"
+          class="form-control userObject"
           id="inputObject"
           aria-describedby="inputObject"
           placeholder="For example: Marlon Brando"
           v-model="object"
+          @focus="hide_all_rows_except(0)"
           required
         />
       </div>
@@ -36,11 +41,13 @@
         <label for="inputAction" class="form-label">Action / activity</label>
         <input
           type="text"
-          class="form-control"
-          id="inputAction"
+          autocomplete="off"
+          class="form-control userAction"
+          id="inputAction "
           aria-describedby="inputAction"
           placeholder="For example: eating soup"
           v-model="action"
+          @focus="hide_all_rows_except(1)"
           required
         />
       </div>
@@ -50,11 +57,13 @@
         >
         <input
           type="text"
-          class="form-control"
+          autocomplete="off"
+          class="form-control userLocation"
           id="inputLocation"
           aria-describedby="inputLocation"
           placeholder="For example: on the beach"
           v-model="location"
+          @focus="hide_all_rows_except(2)"
           required
         />
       </div>
@@ -64,10 +73,12 @@
         >
         <input
           type="text"
-          class="form-control"
+          autocomplete="off"
+          class="form-control userStyle"
           id="inputStyle"
           aria-describedby="inputStyle"
           placeholder="For example: Van Gogh"
+          @focus="hide_all_rows_except(3)"
           v-model="style"
         />
       </div>
@@ -80,10 +91,12 @@
         Create
       </button>
     </form>
+    <div class="simple-keyboard"></div>
   </section>
 </template>
-
 <script setup>
+import Keyboard from "simple-keyboard";
+import "simple-keyboard/build/css/index.css";
 defineEmits(["create"]);
 defineProps(["creatingImage", "link"]);
 
@@ -91,13 +104,145 @@ const object = ref("");
 const action = ref("");
 const location = ref("");
 const style = ref("");
+
+let layout = {
+  default: [
+    "{tab} q w e r t y u i o p {bksp}",
+    "a s d f g h j k l {enter}",
+    "z x c v b n m",
+    "{space}",
+  ],
+  shift: [
+    "{tab} Q W E R T Y U I O P {bksp}",
+    "{lock} A S D F G H J K L {enter}",
+    "{shift} Z X C V B N M {shift}",
+    "{space}",
+  ],
+};
+
+let keyboard1 = null;
+let keyboard2 = null;
+let keyboard3 = null;
+let keyboard4 = null;
+
+function hide_all_rows_except(i) {
+  var rows = document.querySelectorAll(".hg-rows");
+  rows.forEach((r, index) => {
+    if (index != i) {
+      r.classList.add("d-none");
+    } else {
+      r.classList.remove("d-none");
+    }
+  });
+  // console.log(rows);
+}
+
+onMounted(() => {
+  keyboard1 = new Keyboard({
+    onChange: (userObject) => {
+      document.querySelector(".userObject").value = userObject;
+      object.value = userObject;
+    },
+
+    layout: layout,
+    // onKeyPress: (char) => {
+    //   // console.log(char)
+    //   if (char === "{shift}" || char === "{lock}") {
+    //     handleShift(0);
+    //   }
+    // },
+  });
+  keyboard2 = new Keyboard({
+    onChange: (userAction) => {
+      document.querySelector(".userAction").value = userAction;
+      console.log("userAction", userAction);
+      action.value = userAction;
+    },
+    // onKeyPress: (char) => {
+    //   console.log(21);
+    //   if (char === "{shift}" || char === "{lock}") {
+    //     handleShift(1);
+    //   }
+    // },
+    layout: layout,
+  });
+  keyboard3 = new Keyboard({
+    onChange: (userLocation) => {
+      document.querySelector(".userLocation").value = userLocation;
+      location.value = userLocation;
+    },
+    // onKeyPress: (char) => {
+    //   // console.log(char)
+    //   if (char === "{shift}" || char === "{lock}") {
+    //     handleShift(2);
+    //   }
+    // },
+    layout: layout,
+  });
+  keyboard4 = new Keyboard({
+    onChange: (userStyle) => {
+      document.querySelector(".userStyle").value = userStyle;
+      style.value = userStyle;
+    },
+    // onKeyPress: (char) => {
+    //   console.log(char);
+    //   if (char === "{shift}" || char === "{lock}") {
+    //     handleShift(3);
+    //   }
+    // },
+    layout: layout,
+  });
+  setTimeout(() => {
+    hide_all_rows_except(-1);
+  }, 0);
+});
+
+// function handleShift(i) {
+//   var currentLayout;
+
+//   switch (i) {
+//     case 0:
+//       currentLayout = keyboard1.options.layoutName;
+//       keyboard1.setOptions({
+//         layoutName: currentLayout === "default" ? "shift" : "default",
+//       });
+//       hide_all_rows_except(0);
+//       break;
+//     case 1:
+//       currentLayout = keyboard2.options.layoutName;
+//       keyboard2.setOptions({
+//         layoutName: currentLayout === "default" ? "shift" : "default",
+//       });
+//       break;
+//     case 2:
+//       currentLayout = keyboard3.options.layoutName;
+//       keyboard3.setOptions({
+//         layoutName: currentLayout === "default" ? "shift" : "default",
+//       });
+//       break;
+//     case 3:
+//       currentLayout = keyboard4.options.layoutName;
+//       console.log(currentLayout);
+//       keyboard4.setOptions({
+//         layoutName: currentLayout === "default" ? "shift" : "default",
+//       });
+//       console.log(keyboard4.options.layoutName);
+//       break;
+//     default:
+//       break;
+//   }
+//   console.log("i =", i);
+// }
 </script>
 
 <style scoped>
 #biss-logo {
   margin-left: -1rem;
 }
-
+.simple-keyboard {
+  width: 100%;
+  margin-top: 10%;
+}
 form > div {
   margin-bottom: 1rem;
 }

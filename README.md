@@ -4,12 +4,21 @@ We use the OpenAI API to make calls to Dall-E and present the users with their c
 
 This project is built using Nuxt v3, look at the [nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.
 
+![image](https://github.com/MaastrichtU-BISS/text-to-image/assets/93982741/2e734ce4-b89d-4131-ab2f-3b6119862e69)
+
 ## Setup
 
-Make sure to install the dependencies:
+1. Copy the project to your local machine
+2. Open the text-to-image folder in your IDE
+3. Create a new .env file in the root of the project
+4. Add the following line to the .env file:
+```env
+NUXT_API_KEY="your Dall-E2 api key here"
+```
+
+5. Install dependencies:
 
 ```bash
-# yarn
 yarn install
 ```
 
