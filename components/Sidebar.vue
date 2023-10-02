@@ -43,7 +43,7 @@
           type="text"
           autocomplete="off"
           class="form-control userAction"
-          id="inputAction "
+          id="inputAction"
           aria-describedby="inputAction"
           placeholder="For example: eating soup"
           v-model="action"
