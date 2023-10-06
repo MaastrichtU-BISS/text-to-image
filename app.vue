@@ -58,9 +58,9 @@
 <script setup>
 import QrcodeVue from "qrcode.vue";
 
-const link = ref(
-  "/img/DALL·E 2022-11-11 14.24.43 - Marlon Brando eating soup on the beach in the style of van Gogh.png"
-);
+const defaultImage = "/img/DALL·E 2022-11-11 14.24.43 - Marlon Brando eating soup on the beach in the style of van Gogh.png";
+
+const link = ref(defaultImage);
 
 const prompt = ref(
   "Marlon Brando eating soup on the beach in the style of van Gogh"
@@ -79,33 +79,43 @@ async function create(object, action, location, style) {
 
   creatingImage.value = true;
 
-  const newPrompt = createPrompt(object, action, location, style);
+  try {
 
-  const moderationResults = await moderateInput(newPrompt);
-
-  if (moderationResults.flagged) {
-    const flaggedCategories = Object.entries(moderationResults.categories)
-      .filter(([category, flagged]) => flagged === true)
-      .map(([category, flagged]) => category);
-
-    alert(
-      "This prompt is not allowed because it contains: " +
-        flaggedCategories.join(", ")
-    );
-
+    const newPrompt = createPrompt(object, action, location, style);
+  
+    const moderationResults = await moderateInput(newPrompt);
+    const flagged = Object.values(moderationResults.categories).filter(x => x).length > 0;
+  
+    if (flagged || moderationResults.flagged) {
+      const flaggedCategories = Object.entries(moderationResults.categories)
+        .filter(([category, flagged]) => flagged === true)
+        .map(([category, flagged]) => category);
+  
+      alert(
+        "This prompt is not allowed because it contains: " +
+          flaggedCategories.join(", ")
+      );
+  
+      link.value = defaultImage;
+      creatingImage.value = false;
+      return;
+    }
+  
+    link.value = "/img/bars.svg";
+    prompt.value = "Generating Image";
+  
+    const imageUrl = await getImageUrl(newPrompt);
+    console.log(imageUrl);
+  
+    prompt.value = newPrompt;
+    link.value = imageUrl;
     creatingImage.value = false;
-    return;
+  } catch (e) {
+    console.error(e)
+    alert("Failed to generate image");
+    link.value = defaultImage;
+    creatingImage.value = false;
   }
-
-  link.value = "/img/bars.svg";
-  prompt.value = "Generating Image";
-
-  const imageUrl = await getImageUrl(newPrompt);
-  console.log(imageUrl);
-
-  prompt.value = newPrompt;
-  link.value = imageUrl;
-  creatingImage.value = false;
 }
 
 function createPrompt(object, action, location, style) {
